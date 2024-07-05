@@ -1,7 +1,7 @@
 from pathlib import Path
 
 EXCLUDE_DIR = {"FILES", ".git", "_assets"}
-SORT = ["Python", "Go", "前端", "折腾", "逆向工程", "杂谈", "其他"]
+SORT = ["Python", "Go", "前端", "折腾", "逆向工程", "杂谈", "其他", "coding"]
 
 
 def gen_sub(p: Path, deepth: int = 0, prefix_idx: str = "") -> list[str]:
@@ -18,7 +18,6 @@ def gen_sub(p: Path, deepth: int = 0, prefix_idx: str = "") -> list[str]:
         else:
             ret.append(f'{deepth * "\t"}* [{fp.name.removesuffix('.md')}]({fp})')
             i += 1
-    print(ret)
     return sorted(ret)
 
 

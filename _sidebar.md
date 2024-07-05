@@ -44,3 +44,9 @@
 * 其他
 	* [objective-c-(一)-基础语法](其他/objective-c-(一)-基础语法.md)
 	* [记一次-MySQL-调优](其他/记一次-MySQL-调优.md)
+* coding
+	* [bash](coding/bash.md)
+	* [css](coding/css.md)
+	* [js](coding/js.md)
+	* [python](coding/python.md)
+	* [sql](coding/sql.md)
