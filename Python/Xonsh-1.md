@@ -12,7 +12,7 @@
 
 xonsh 不仅仅做到了同时支持 python 和 bash 语法, 还支持混着使用:
 
-```sh
+```bash
 >>> pwd
 /Users/zhyipeng
 >>> app = 'python'
@@ -27,7 +27,7 @@ xonsh 不仅仅做到了同时支持 python 和 bash 语法, 还支持混着使�
 
 有一些命令是同时满足 bash 和 python 语法的, 这种场景下 xonsh 如何去解析呢?
 
-```sh
+```bash
 >>> ls  # ls 命令
 tmp
 >>> ls = 5  # 声明一个变量名为 ls 并赋值
@@ -61,7 +61,7 @@ xonsh 拥有 python-mode 和 subprocess-mode(bash) 两种模式
 
 `$()` 语法用于指定 subprogress-mode 执行命令并捕获执行结果, 将标准输出作为 python 字符串返回:
 
-```sh
+```bash
 >>> $(ls -l)
 'total 0\n-rw-rw-r-- 1 snail snail 0 Mar  8 15:46 xonsh\n'
 ```
@@ -72,7 +72,7 @@ xonsh 拥有 python-mode 和 subprocess-mode(bash) 两种模式
 
 `!()` 语法和 `$()` 类似, 但是会返回更多的信息 -- 一个 CommandPipeline 对象
 
-```sh
+```bash
 >>> !(ls -l)
 CommandPipeline(
   stdin=<_io.BytesIO object at 0x10b40fa90>,
@@ -105,7 +105,7 @@ CommandPipeline(
 
 `$[]` 同 `$()` , 但是不会捕获标准输出, 其返回值始终是 None
 
-```sh
+```bash
 >>> ret = $[ls -l]
 total 0
 -rw-rw-r-- 1 snail snail 0 Mar  8 15:46 xonsh
@@ -119,7 +119,7 @@ True
 
 `![]` 也类似地对应 `!()` , 只是其返回值是 `HiddenCommandPipeline` 对象
 
-```sh
+```bash
 >>> ret = ![ls -l]
 total 0
 -rw-rw-r-- 1 snail snail 0 Mar  8 15:46 xonsh
@@ -139,7 +139,7 @@ xonsh.procs.pipelines.HiddenCommandPipeline
 
 上述几个表达式通常是用来将 subprocess-mode 的返回值嵌入到 python-mode 中, 而 `@()` 表达式则反之, 一般用于将 python-mode 处理结果传递给 subprocess-mode:
 
-```sh
+```bash
 >>> x = 'hello'
 >>> y = 'xonsh'
 >>> echo @(x + ' ' + y)
@@ -152,7 +152,7 @@ hello xonsh
 
 特别的, 当 `@()` 表达式用于 subprocess 的参数中, 并且其返回值是一个非 string 的可迭代对象时, 将会和起到类似 bash 中大括号拓展的效果:
 
-```sh
+```bash
 >>> echo hello@(['world', 'xonsh'])
 helloworld helloxonsh
 >>> echo @(['a', 'b']):@(['x', 'y'])
@@ -165,7 +165,7 @@ a:x a:y b:x b:y
 
 用于特定场景: 将命令的输出代替命令本身, 如:
 
-```sh
+```bash
 >>> # this returns a string representing stdout
 >>> $(which ls)
 'ls --color=auto\n'
@@ -200,7 +200,7 @@ some_file  some_other_file
 
 可, 但是没那么简单.
 
-```sh
+```bash
 >>> def foo(a, b):
         print(f'{a=}')
         print(f'{b=}')
@@ -229,7 +229,7 @@ xonsh 中同时支持 python 的 `and/or` 运算符和 bash 中的 `&&/||` 运�
 
 绝大部分情况都可以用字符串的形式实现对 xonsh 特殊语法的转义:
 
-```sh
+```bash
 >>> print("$HOME")
 $HOME
 >>> echo "$HOME"
@@ -250,7 +250,7 @@ $HOME
 
 xonsh 支持 python 的 r-string 和 f-string, 并且额外提供了一种在 shell 中很有用的 p-string
 
-```sh
+```bash
 >>> p = p'/tmp'
 >>> p
 PosixPath('/tmp')
@@ -270,7 +270,7 @@ pathlib.PosixPath
 
 可以使用反引号(`)包裹字符串来做路径的正则匹配, 返回一个字符串形式的路径列表
 
-```sh
+```bash
 >>> touch a aa a1 a2 aba cba
 >>> `a\d+`
 ['a1',
@@ -293,7 +293,7 @@ a1 a2
 
 subprocess-mode  下可以使用 bash 下的模式拓展:
 
-```sh
+```bash
 >>> ls a*
 a aa a1 a2 aba
 >>> ls a[12]  # 中括号有特殊语法, 直接使用会有语法错误
@@ -304,7 +304,7 @@ a1 a2
 
 使用 g`` 语法可以将这种拓展适用在 python-mode 中:
 
-```sh
+```bash
 >>> g`a*`  # 同样返回 list[str]
 ['a', 'aa', 'a1', 'a2', 'aba']
 >>> ls g`a*`
@@ -319,7 +319,7 @@ a aa a1 a2 aba
 
 p`` 语法使用 pythonic 正则, 并且返回 list[Path]
 
-```sh
+```bash
 >>> p`a\d+`
 [PosixPath('a1'), PosixPath('a2')]
 ```
@@ -332,7 +332,7 @@ ipython 中可以使用 `?` 和 `??` 获得对象, 函数, 类等的帮助信息
 
 当然, xonsh 也是支持的:
 
-```sh
+```bash
 >>> import os
 >>> os.path.join?
 Type:         function
@@ -383,7 +383,7 @@ def join(a, *p):
 
 对 subprocess 命令使用 `?` 和 `??` 时则相当于 `man` 指令
 
-```sh
+```bash
 >>> ls?
 >>> ls??
 >>> man ls

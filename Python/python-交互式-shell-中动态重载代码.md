@@ -45,6 +45,6 @@ Out[6]: 43
 ```
 
 可以将这两天语句放入配置中, 每次进入 ipython 自动加载 autoreload
-```shell
+```bash
 echo "c.InteractiveShellApp.exec_lines = [ '%load_ext autoreload', '%autoreload 2' ]" >> ~/.ipython/profile_default/ipython_config.py                                                        <
 ```

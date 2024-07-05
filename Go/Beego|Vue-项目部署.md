@@ -14,7 +14,7 @@
 还是列一下步骤吧：
 
 1. 安装 go
-```shell
+```bash
 wget https://dl.google.com/go/go1.14.linux-amd64.tar.gz
 tar -C /usr/local -xzf go1.14.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
@@ -23,7 +23,7 @@ export PATH=$PATH:/usr/local/go/bin
 2. 拉代码 略
 
 3. 安装依赖&build
-```shell
+```bash
 go build main.go  # build 的时候会自动装依赖
 ```
 > 国内服务器可以加一下七牛代理 `export GOPROXY=https://goproxy.cn`
@@ -31,7 +31,7 @@ go build main.go  # build 的时候会自动装依赖
 4. 配置 supervisor
 	
     其实就是 Beego 文档那个配置
-```shell
+```bash
 [program:mypage-backend]
 directory = /srv/www/mypage-backend
 command = /srv/www/mypage-backend/main
@@ -47,7 +47,7 @@ stdout_logfile = /etc/supervisor/logs/beego.log
 	不是必须，beego 可以直接设置监测 TCP 80 端口请求。
     
     配 nginx 可以方便和其他项目共用 80 端口，还有访问日志、负载均衡等等...
-```shell
+```bash
 server {
     listen      80;
     server_name zhyipeng.com; 

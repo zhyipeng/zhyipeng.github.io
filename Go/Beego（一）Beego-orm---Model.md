@@ -14,7 +14,7 @@
 
 ## bee new/api
 
-```shell
+```bash
 bee new [project name]
 bee api [project name]
 ```
@@ -25,7 +25,7 @@ bee api [project name]
 
 因为我的目标就是前后端分离项目，所以就直接 bee api 了。项目结构如下：
 
-```shell
+```bash
 conf
 	app.conf
 controllers

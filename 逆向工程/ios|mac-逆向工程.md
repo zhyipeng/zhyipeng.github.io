@@ -66,7 +66,7 @@ view.viewDidLoad()
 
 
 ### 4. lldb 简单使用
-```shell
+```bash
 # 打印{表达式}
 p {expression}
 

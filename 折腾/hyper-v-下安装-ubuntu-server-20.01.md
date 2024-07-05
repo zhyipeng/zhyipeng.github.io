@@ -47,7 +47,7 @@ hyper-v 快速创建就很简单了, 不过选镜像那一步必须要等微软�
 
 代理（梯子）是必备的，由于宿主机有代理，就不需要在虚拟机里再安装了，直接配置代理地址就行：
 
-```shell
+```bash
 export http_proxy=http[s]://hostname:port
 export https_proxy=http[s]://hostname:port
 export all_proxy=sock5://hostname:port
@@ -55,7 +55,7 @@ export all_proxy=sock5://hostname:port
 
 个人习惯是配置一组 alias 来开关代理：
 
-```shell
+```bash
 alias set_proxy="export http_proxy=http[s]://hostname:port; export https_proxy=http[s]://hostname:port; export all_proxy=sock5://hostname:port"
 alias unset_proxy="export http_proxy=''; export https_proxy=''; export all_proxy=''"
 ```
@@ -72,7 +72,7 @@ vm 中有三种网络模式，桥接/net/专用，对应到 hyper-v 就是 外�
 
 ubuntu 采用 netplan 作为网络配置管理
 
-```shell
+```bash
 $ vim /etc/netplan/{每台机器不一}.yaml
 
 network:
