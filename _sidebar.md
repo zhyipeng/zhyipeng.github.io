@@ -1,6 +1,3 @@
-* .github
-		* [sidebar.yml](.github/workflows/sidebar.yml)
-	* [1.1 workflows](.github/workflows)
 * Python
 	* [Django-的一些<特性>](Python/Django-的一些<特性>.md)
 	* [Python-GUI-方案](Python/Python-GUI-方案.md)
