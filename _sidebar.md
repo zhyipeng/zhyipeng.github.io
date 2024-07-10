@@ -1,3 +1,6 @@
+* .github
+		* [sidebar.yml](.github/workflows/sidebar.yml)
+	* [1.1 workflows](.github/workflows)
 * Python
 	* [Django-的一些<特性>](Python/Django-的一些<特性>.md)
 	* [Python-GUI-方案](Python/Python-GUI-方案.md)
@@ -33,6 +36,7 @@
 * 折腾
 	* [HTTPS](折腾/HTTPS.md)
 	* [NAS折腾记---低成本的外网访问](折腾/NAS折腾记---低成本的外网访问.md)
+	* [VSCode配置](折腾/VSCode配置.md)
 	* [hyper-v-下安装-ubuntu-server-20.01](折腾/hyper-v-下安装-ubuntu-server-20.01.md)
 * 逆向工程
 	* [ios-Hook-的一些原理](逆向工程/ios-Hook-的一些原理.md)
