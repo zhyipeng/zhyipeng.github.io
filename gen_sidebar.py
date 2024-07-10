@@ -32,7 +32,7 @@ def gen():
         if p.is_dir():
             if p.name in EXCLUDE_DIR:
                 continue
-            if p.name.startswith('_'):
+            if p.name.startswith(('_', '.')):
                 continue
             ret.append(f'* {p.name}')
             ret.extend(gen_sub(p, 1, f'{i}.'))
