@@ -60,3 +60,10 @@ ul {
 }
 </style>
 ```
+
+### 检测元素之外的点击
+```js
+document.addEventListener('click', function (evt) {
+    const isClickedOutside = !ele.contains(evt.target);
+});
+```

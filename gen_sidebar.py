@@ -1,7 +1,7 @@
 from pathlib import Path
 
-EXCLUDE_DIR = {'FILES', '.git', '_assets'}
-SORT = ['Python', 'Go', '前端', '折腾', '逆向工程', '杂谈', '其他', 'coding']
+EXCLUDE_DIR = {'FILES', '.git', '_assets', '草稿'}
+SORT = ['Python', 'Go', '前端', '折腾', '逆向工程', ' j杂谈', '其他', 'coding']
 
 
 def gen_sub(p: Path, deepth: int = 0, prefix_idx: str = '') -> list[str]:

@@ -16,15 +16,24 @@
 - Keybindings - IntelliJ IDEA Keybindings, 更容易从 JB 过渡, 虽然还是有一堆要改的, 因为我在 JB 里也改了不少热键
 
 ### git
-- GitLens - 被称为必备的 git 插件, 功能强大. 不过简单的 git 操作我更喜欢在终端用 lazygit
-- Git Graph - GitLens 加上这个勉强可以和 JB 一战了
+- ~~GitLens~~ - 被称为必备的 git 插件, 功能强大. 不过简单的 git 操作我更喜欢在终端用 lazygit
+- ~~Git Graph~~ - 单独的可视化插件, GitLens 也有这个功能
+
+> VSCdoe 1.91 版本实验性功能已经支持 git graph 了
 
 ### 开发辅助
 - Project Manager - 在侧边栏加上了一个项目目录, 可以快速切换项目, 其实也没啥大用, 聊胜于无
 - Path Autocomplete - 自动补全路径, 补全相对路径很方便, 绝对路径貌似因为权限的问题无法识别
 - Markdown All in One - 简单的文档就在 vscode 编辑, 复杂点的上 yn
 - Todo Tree - 把代码里的 TODO/FIXME 等标志在侧栏的树状图中管理
-- Excel Viewer - 使 VSCode 支持 Excel 文件查看/编辑
+- ~~Excel Viewer - 使 VSCode 支持 Excel 文件查看/编辑~~
+- 草稿本 -  提供类似与 JB 家的临时文件功能
+- Make support and task provider - 将 makefile 的 快捷指令, 就可以不用开终端去调用了
+
+--- 2024-08-23 更新 ---
+> 不再推荐 Excel Viewer，开发者很傻逼地加了广告，还无法关闭，替品：Office Viewer(M karkdown Editor)
+- Office Viewer(Markdown Editor) - 支持 office/pdf 等众多格式的预览，貌似是国人开发的，开源免费无广告
+
 
 > Excel Viewer 容易误触编辑, 如果全局有自动保存配置的话就容易增加不必要的改动信息, 可以单独将 Excel 文件的自动保存关闭
 > ```json
@@ -34,6 +43,8 @@
 >     },
 > }
 > ```
+- Github Actions - github actions 辅助插件
+- Remote 套件 - windows 下用的多, 用来在 wsl 上开发, remote 套件是 VSCode 生态比 Jetbrain 生态最有优势的特性之一
 
 ### AI
 - github copilot - 收费, pass
@@ -61,85 +72,7 @@
     "vim.leader": "`",
     // 键绑定, 可以支持按键映射, 也可以调用 vscode 的功能
     // 功能 id 可以从 vscode 的热键配置里获取
-    "vim.normalModeKeyBindingsNonRecursive": [
-        // 移动 panel
-        {
-            "before": ["<leader>", "m"],
-            "commands": ["workbench.action.moveEditorToNextGroup"]
-        },
-        {
-            "before": ["<leader>", "M"],
-            "commands": ["workbench.action.moveEditorToPreviousGroup"]
-        },
-        // 切换标签页
-        {
-            "before": ["J"],
-            "commands": ["workbench.action.nextEditor"]
-        },
-        {
-            "before": ["K"],
-            "commands": ["workbench.action.previousEditor"]
-        },
-        // 切换 panel
-        {
-            "before": ["<leader>", "l"],
-            "after": ["<C-w>", "l"]
-        },
-        {
-            "before": ["<leader>", "h"],
-            "after": ["<C-w>", "h"]
-        },
-        {
-            "before": ["<leader>", "j"],
-            "after": ["<C-w>", "j"]
-        },
-        {
-            "before": ["<leader>", "k"],
-            "after": ["<C-w>", "k"]
-        },
-        // 前进后退
-        {
-            "before": ["g", "h"],
-            "commands": ["workbench.action.navigateBack"],
-        },
-        {
-            "before": ["g", "l"],
-            "commands": ["workbench.action.navigateForward"],
-        },
-        // 调用 easymotion
-        {
-            "before": ["s"],
-            "after": ["<leader>", "<leader>", "s"],
-        },
-        // 最大化 panel
-        {
-            "before": ["<leader>", "f"],
-            "commands": ["workbench.action.toggleMaximizeEditorGroup"]
-        },
-        // 打开最近的项目, 这是为什么说 Project Manager 插件鸡肋的原因
-        {
-            "before": ["g", "r"],
-            "commands": ["workbench.action.openRecent"]
-        },
-        // git 常用操作
-        {
-            "before": ["g", "b"],
-            "commands": ["git.checkout"]
-        },
-        {
-            "before": ["g", "p"],
-            "commands": ["git.pull"]
-        },
-        {
-            "before": ["g", "P"],
-            "commands": ["git.push"]
-        },
-        // 重构
-        {
-            "before": ["<leader>", "r"],
-            "commands": ["editor.action.refactor"]
-        }
-    ],
+    "vim.normalModeKeyBindingsNonRecursive": [],
 }
 ```
 
@@ -214,8 +147,12 @@
 ### 其他辅助插件
 
 - autoDocstring - 自动生成标准格式化的 docstring
-- Pip Manager - 在侧栏管理 pip 包, 但是 uv 创建的虚拟环境是没有 pip 的, 所以不太兼容
+- ~~Pip Manager~~ - 在侧栏管理 pip 包, 但是 uv 创建的虚拟环境是没有 pip 的, 所以不太兼容
 - Python Indent - 当输入 `Enter` 换行时可根据上下文设置更合适的缩进, 使用 vim-o 新增行时不适用
+- Jinjia2 Snippet Kit - 给 html 文件增加一些 jinja2 的代码片段, 不如 pycharm 的功能, 聊胜于无吧
+- Python Environment Manager - 新出的虚拟环境管理器, 完美替代掉 Pip Manager, 不过依旧不支持 uv
+> 有一个骚操作, 把 pip 安装回去, uv pip install pip, 这时插件就可以正常使用 pip 了 (或者想办法把 pip 映射为 uv pip)
+- vscode-surround-python - 提供诸如 `try-except`, `with` 等代码模板支持
 
 > python 项目会自动加载根目录下的 .env 文件里的环境变量, 在某些情况下会导致意想不到的 bug, 因此将它关掉: 
 > ```json
@@ -224,6 +161,15 @@
 > }
 > ```
 
+> 编辑类的功能比如 vscode-surround-python 我希望通过 vim 来触发, 但是 vim 的 keybinding 不支持 when 条件, 所以这种需要写在 vscode 的 keybindings.json 里:
+> ```json
+> {
+>   // vim visual 模式下, python 代码 s 触发 surround-python 插件
+>   "key": "s",
+>   "command": "surround-python.with",
+>   "when": "editorTextFocus && editorLangId == 'python' && (vim.mode == 'Visual' || vim.mode == 'VisualLine' || vim.mode == 'VisualBlock')"
+> }
+> ```
 
 ## Go
 相比 Python, Go 更开箱即用些, 装上 Go 插件, 设置一下 GOPATH 基本上就好了
@@ -232,3 +178,47 @@
     "go.gopath": "$HOME/go"
 }
 ```
+
+--- 2024-08-16 更新 ---
+- Tooltitude for Go (GoLang): 在编辑器内提供一些快捷操作，重点：提供了类似 Goland 的 <结构体实现了哪些接口> 的提示和快速跳转
+![Img](./FILES/VSCode配置.md/img-20240816154329.png)
+
+
+
+## Javascript/Typescript
+
+前端这边也有很多插件
+
+### 语言插件
+- Vue-Official
+- Tailwind CSS IntelliSense
+
+相关配置:
+```json
+{
+    "[vue]": {
+        // 优化 tailwindcss 的提示
+        "editor.quickSuggestions": {
+            "other": "on",
+            "strings": "on"
+        },
+        "editor.defaultFormatter": "Vue.volar",
+        "editor.formatOnSave": true,
+    },
+}
+```
+
+### Linter&Formatter
+- ESLint - 无需解释
+- Prettier - 同上
+
+### Debuger
+- Microsoft Edge Tools for VS Code - 我一般用 Edge 浏览器, 其他主流浏览器也有对应的插件
+
+### 辅助开发
+- Vite - 打开项目自动启动 vite  开发服务
+- element-plus-doc - element-plus 库的智能提示+悬停文档
+
+## 其他语言支持
+- ~~Protobuf support - protobuf 语法支持~~ 不支持跳转，使用替品
+- vscode-proto3 - protobuf3 语法高亮，补全和跳转
