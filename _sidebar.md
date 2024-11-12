@@ -1,3 +1,7 @@
+* 杂谈
+	* [一个后端艰辛的前端之路](杂谈/一个后端艰辛的前端之路.md)
+	* [关于这个站点](杂谈/关于这个站点.md)
+	* [打脸来了...](杂谈/打脸来了....md)
 * Python
 	* [Django-的一些<特性>](Python/Django-的一些<特性>.md)
 	* [Python-GUI-方案](Python/Python-GUI-方案.md)
@@ -32,16 +36,13 @@
 	* [将js依赖一同打包至bundle](前端/将js依赖一同打包至bundle.md)
 * 折腾
 	* [HTTPS](折腾/HTTPS.md)
-	* [NAS折腾记---低成本的外网访问](折腾/NAS折腾记---低成本的外网访问.md)
+	* [NAS不吃灰（一）——低成本的外网访问](折腾/NAS不吃灰（一）——低成本的外网访问.md)
+	* [NAS不吃灰（二）—— 自建音乐库](折腾/NAS不吃灰（二）—— 自建音乐库.md)
 	* [VSCode配置](折腾/VSCode配置.md)
 	* [hyper-v-下安装-ubuntu-server-20.01](折腾/hyper-v-下安装-ubuntu-server-20.01.md)
 * 逆向工程
 	* [ios-Hook-的一些原理](逆向工程/ios-Hook-的一些原理.md)
 	* [ios|mac-逆向工程](逆向工程/ios|mac-逆向工程.md)
-* 杂谈
-	* [一个后端艰辛的前端之路](杂谈/一个后端艰辛的前端之路.md)
-	* [关于这个站点](杂谈/关于这个站点.md)
-	* [打脸来了...](杂谈/打脸来了....md)
 * 其他
 	* [objective-c-(一)-基础语法](其他/objective-c-(一)-基础语法.md)
 	* [记一次-MySQL-调优](其他/记一次-MySQL-调优.md)
