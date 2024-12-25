@@ -52,7 +52,9 @@
 - 豆包 MarsCode - 字节的, 看到阮一峰推荐这个, 说和 github copilot 差不多水平了, 就想试试, 结果它在补全预览的时候拦截了 Esc 的行为, 严重影响 vim 的功能, 所以直接 pass.
 - CodeGeeX - 清华大学的, 算是除了 github copilot 外我用过的体验最好的了
 
-### vim
+### ~~vim~~
+> vim 插件貌似有些性能问题，经社区推荐使用 vscode-neovim 代替
+
 自从用了 vim 之后, 编辑器提供的编辑相关的热键都可以忽略了, 甚至非编辑相关的功能也可以绑到 vim 映射里
 
 ```json
@@ -74,6 +76,86 @@
     // 功能 id 可以从 vscode 的热键配置里获取
     "vim.normalModeKeyBindingsNonRecursive": [],
 }
+```
+
+### vscode-neovim
+neovim 插件的原理是后台运行一个 neovim 实例，与 vscode 共享 buffer，使在 normal 模式下能够获得满血的 nvim 体验，而图形渲染和 insert 模式则由 vscode 提供，这样能够同时享受到 nvim 和 vscode 的插件生态
+
+nvim 配置我直接用的 [lazyvim](https://www.lazyvim.org/)，省心，而且其本身支持 vscode 模式，在终端和 vscode 里都表现出色。
+
+额外增加了一些 vscode 模式下的专属热键，主要用于调用 vscode 的功能
+```lua
+-- keymaps.lua
+-- vscode 模式专属
+if vim.g.vscode then
+  vim.g.mapleader = "`"
+
+  local opts = {
+    noremap = true,
+    silent = true,
+  }
+
+  vim.api.nvim_set_keymap("n", "<leader>h", ":call VSCodeNotify('workbench.action.navigateLeft')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "<leader>l", ":call VSCodeNotify('workbench.action.navigateRight')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "<leader>j", ":call VSCodeNotify('workbench.action.navigateDown')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "<leader>k", ":call VSCodeNotify('workbench.action.navigateUp')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "<leader>m", ":call VSCodeNotify('workbench.action.moveEditorToNextGroup')<CR>", opts)
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>M",
+    ":call VSCodeNotify('workbench.action.moveEditorToPreviousGroup')<CR>",
+    opts
+  )
+  vim.api.nvim_set_keymap("n", "<leader>r", ":call VSCodeNotify('editor.action.rename')<CR>", opts)
+  vim.api.nvim_set_keymap(
+    "n",
+    "<leader>f",
+    ":call VSCodeNotify('workbench.action.toggleMaximizeEditorGroup')<CR>",
+    opts
+  )
+  vim.api.nvim_set_keymap("n", "gr", ":call VSCodeNotify('workbench.action.openRecent')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gb", ":call VSCodeNotify('git.checkout')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gp", ":call VSCodeNotify('git.pull')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gP", ":call VSCodeNotify('git.push')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gn", ":call VSCodeNotify('editor.action.marker.next')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gs", ":call VSCodeNotify('workbench.action.quickOpen')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "zc", ":call VSCodeNotify('editor.fold')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "zo", ":call VSCodeNotify('editor.unfold')<CR>", opts)
+  vim.api.nvim_set_keymap("v", "r", ":call VSCodeNotify('editor.action.refactor')<CR>", opts)
+end
+```
+
+有些热键也可以直接用 vscode 的
+```json
+[
+    {
+        // vim visual 模式下, python 代码 s 触发 surround-python 插件
+        "key": "s",
+        "command": "surround-python.with",
+        "when": "editorTextFocus && editorLangId == 'python' && (neovim.mode == 'visual' || neovim.mode == 'visualline' || neovim.mode == 'visualblock')"
+    },
+    // 大写HJKL导航需要使用 shift 组合键（这里大小写不区分）
+    {
+        "key": "shift+l",
+        "command": "workbench.action.navigateForward",
+        "when": "editorTextFocus && neovim.mode == 'normal'",
+    },
+    {
+        "key": "shift+h",
+        "command": "workbench.action.navigateBack",
+        "when": "editorTextFocus && neovim.mode == 'normal'",
+    },
+    {
+        "key": "shift+j",
+        "command": "workbench.action.nextEditorInGroup",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+    {
+        "key": "shift+k",
+        "command": "workbench.action.previousEditorInGroup",
+        "when": "editorTextFocus && neovim.mode == 'normal'"
+    },
+]
 ```
 
 
