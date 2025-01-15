@@ -10,16 +10,18 @@
 
 ## 基建
 
-### 基础的几个插件
+### 编辑器相关
 - 语言包 - 没啥好说的
 - 主题包 - 试了几个最后选择 Github Theme
 - Keybindings - IntelliJ IDEA Keybindings, 更容易从 JB 过渡, 虽然还是有一堆要改的, 因为我在 JB 里也改了不少热键
+- macros - 可以一键调用多个 vsc action，暂时没用到，但是感觉有用
 
 ### git
-- ~~GitLens~~ - 被称为必备的 git 插件, 功能强大. 不过简单的 git 操作我更喜欢在终端用 lazygit
+- GitLens - 被称为必备的 git 插件, 功能强大. 不过简单的 git 操作我更喜欢在终端用 lazygit。装这个插件主要为了在编辑器内看 git blame
 - ~~Git Graph~~ - 单独的可视化插件, GitLens 也有这个功能
 
 > VSCdoe 1.91 版本实验性功能已经支持 git graph 了
+- LazyGit for VSCode - 一键调出 lazygit，稍微能节省一步
 
 ### 开发辅助
 - Project Manager - 在侧边栏加上了一个项目目录, 可以快速切换项目, 其实也没啥大用, 聊胜于无
@@ -27,14 +29,7 @@
 - Markdown All in One - 简单的文档就在 vscode 编辑, 复杂点的上 yn
 - Todo Tree - 把代码里的 TODO/FIXME 等标志在侧栏的树状图中管理
 - ~~Excel Viewer - 使 VSCode 支持 Excel 文件查看/编辑~~
-- 草稿本 -  提供类似与 JB 家的临时文件功能
-- Make support and task provider - 将 makefile 的 快捷指令, 就可以不用开终端去调用了
-
---- 2024-08-23 更新 ---
 > 不再推荐 Excel Viewer，开发者很傻逼地加了广告，还无法关闭，替品：Office Viewer(M karkdown Editor)
-- Office Viewer(Markdown Editor) - 支持 office/pdf 等众多格式的预览，貌似是国人开发的，开源免费无广告
-
-
 > Excel Viewer 容易误触编辑, 如果全局有自动保存配置的话就容易增加不必要的改动信息, 可以单独将 Excel 文件的自动保存关闭
 > ```json
 > {
@@ -43,14 +38,22 @@
 >     },
 > }
 > ```
+
+- Office Viewer(Markdown Editor) - 支持 office/pdf 等众多格式的预览，貌似是国人开发的，开源免费无广告
 - Github Actions - github actions 辅助插件
 - Remote 套件 - windows 下用的多, 用来在 wsl 上开发, remote 套件是 VSCode 生态比 Jetbrain 生态最有优势的特性之一
+- 草稿本 -  提供类似与 JB 家的临时文件功能
+- Make support and task provider - 将 makefile 的 快捷指令, 就可以不用开终端去调用了
+- REST Client - 类似 JB IDE 自带的 http 客户端，通过 http 文件的形式发送请求
 
 ### AI
-- github copilot - 收费, pass
+- github copilot - ~~收费, pass~~ 目前也有些免费额度了
 - 通义灵码 - 阿里家的, JB 里用的这个, 勉勉强强吧, 但是在 VSCode 里它会给 Quick Fix 上下文菜单里加入 "使用通义灵码修复" 的项, 并且放到了第一个. 这个功能很鸡肋, 又严重影响调用其他 Quick Fix 功能的效率, 还找不到地方关闭, 所以 pass. (其他 AI 也会加入 Quick Fix, 但是没放第一位, 所以还好)
 - 豆包 MarsCode - 字节的, 看到阮一峰推荐这个, 说和 github copilot 差不多水平了, 就想试试, 结果它在补全预览的时候拦截了 Esc 的行为, 严重影响 vim 的功能, 所以直接 pass.
 - CodeGeeX - 清华大学的, 算是除了 github copilot 外我用过的体验最好的了
+- continue - 可以自己设置 ai 服务，一般配合 deepseek 廉价 api 或者本地 ollama api，在交互上比国产的其他都强一些，和新版 github copilot 差不多吧
+
+> 目前的方案：白嫖 cursor tab（补全体验最佳没有之一），白嫖 cursor compose 毕竟麻烦，加上确实用的不多，就用 continue + deepseek 的 chat 下位代替了
 
 ### ~~vim~~
 > vim 插件貌似有些性能问题，经社区推荐使用 vscode-neovim 代替
@@ -78,7 +81,7 @@
 }
 ```
 
-### vscode-neovim
+#### vscode-neovim
 neovim 插件的原理是后台运行一个 neovim 实例，与 vscode 共享 buffer，使在 normal 模式下能够获得满血的 nvim 体验，而图形渲染和 insert 模式则由 vscode 提供，这样能够同时享受到 nvim 和 vscode 的插件生态
 
 nvim 配置我直接用的 [lazyvim](https://www.lazyvim.org/)，省心，而且其本身支持 vscode 模式，在终端和 vscode 里都表现出色。
@@ -122,6 +125,7 @@ if vim.g.vscode then
   vim.api.nvim_set_keymap("n", "zc", ":call VSCodeNotify('editor.fold')<CR>", opts)
   vim.api.nvim_set_keymap("n", "zo", ":call VSCodeNotify('editor.unfold')<CR>", opts)
   vim.api.nvim_set_keymap("v", "r", ":call VSCodeNotify('editor.action.refactor')<CR>", opts)
+  vim.api.nvim_set_keymap("n", "gi", ":call VSCodeNotify('lazygit-vscode.toggle')<CR>", opts)
 end
 ```
 
@@ -235,6 +239,7 @@ end
 - Python Environment Manager - 新出的虚拟环境管理器, 完美替代掉 Pip Manager, 不过依旧不支持 uv
 > 有一个骚操作, 把 pip 安装回去, uv pip install pip, 这时插件就可以正常使用 pip 了 (或者想办法把 pip 映射为 uv pip)
 - vscode-surround-python - 提供诸如 `try-except`, `with` 等代码模板支持
+- Create Blank Python Module - 创建 python 包，可惜由于 vsc api 限制，只能用鼠标在资源管理器上下文菜单中调用，无法纯键盘操作
 
 > python 项目会自动加载根目录下的 .env 文件里的环境变量, 在某些情况下会导致意想不到的 bug, 因此将它关掉: 
 > ```json
@@ -264,6 +269,7 @@ end
 --- 2024-08-16 更新 ---
 - Tooltitude for Go (GoLang): 在编辑器内提供一些快捷操作，重点：提供了类似 Goland 的 <结构体实现了哪些接口> 的提示和快速跳转
 ![Img](./FILES/VSCode配置.md/img-20240816154329.png)
+> 不支持 GOPATH 项目
 
 
 
@@ -273,7 +279,10 @@ end
 
 ### 语言插件
 - Vue-Official
-- Tailwind CSS IntelliSense
+- vue3-snippets-for-vscode - vue3 常用代码模板
+- Tailwind CSS IntelliSense - tailwindcss 代码提示
+- Naive Ui Snippets - naive ui 代码提示
+- element-plus-doc - element-plus 库的智能提示+悬停文档
 
 相关配置:
 ```json
@@ -299,8 +308,9 @@ end
 
 ### 辅助开发
 - Vite - 打开项目自动启动 vite  开发服务
-- element-plus-doc - element-plus 库的智能提示+悬停文档
 
-## 其他语言支持
+## 其他语言和工具支持
 - ~~Protobuf support - protobuf 语法支持~~ 不支持跳转，使用替品
 - vscode-proto3 - protobuf3 语法高亮，补全和跳转
+- SQLite - 可以在资源管理器打开 sqlite 管理
+- Docker - 其实用得很少，大部分情况用终端和 lazydocker
