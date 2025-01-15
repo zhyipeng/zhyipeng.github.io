@@ -43,7 +43,7 @@
 * 折腾
 	* [HTTPS](折腾/HTTPS.md)
 	* [NAS不吃灰（一）——低成本的外网访问](折腾/NAS不吃灰（一）——低成本的外网访问.md)
-	* [NAS不吃灰（二）—— 自建音乐库](折腾/NAS不吃灰（二）——%20自建音乐库.md)
+	* [NAS不吃灰（二）——自建音乐库](折腾/NAS不吃灰（二）——自建音乐库.md)
 	* [VSCode配置](折腾/VSCode配置.md)
 	* [hyper-v-下安装-ubuntu-server-20.01](折腾/hyper-v-下安装-ubuntu-server-20.01.md)
 	* [开发环境](折腾/开发环境.md)
