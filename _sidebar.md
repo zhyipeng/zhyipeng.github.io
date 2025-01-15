@@ -1,7 +1,6 @@
 * 杂谈
 	* [一个后端艰辛的前端之路](杂谈/一个后端艰辛的前端之路.md)
 	* [关于这个站点](杂谈/关于这个站点.md)
-	* [打脸来了...](杂谈/打脸来了....md)
 * Python
 	* [Django-的一些<特性>](Python/Django-的一些<特性>.md)
 	* [Python-GUI-方案](Python/Python-GUI-方案.md)
